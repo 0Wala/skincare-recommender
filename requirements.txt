@@ -10,35 +10,35 @@ et_xmlfile==2.0.0
 gitdb==4.0.12
 GitPython==3.1.44
 idna==3.10
-Jinja2==3.1.6
+Jinja2==3.1.6       # Template engine used in web frameworks
 joblib==1.4.2
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 MarkupSafe==3.0.2
 narwhals==1.33.0
-numpy==2.2.4
-openpyxl==3.1.5
+numpy==2.2.4         # Numerical operations and arrays
+openpyxl==3.1.5     # Excel file reading/writing support for pandas
 packaging==24.2
-pandas==2.2.3
+pandas==2.2.3       # Data manipulation and analysis library
 pillow==11.1.0
 protobuf==5.29.4
-pyarrow==19.0.1
+pyarrow==19.0.1          # Dataframe interoperability (used by pandas)
 pydeck==0.9.1
 python-dateutil==2.9.0.post0
-pytz==2025.2
+pytz==2025.2           
 referencing==0.36.2
-requests==2.32.3
+requests==2.32.3        # Making web requests and handling responses
 rpds-py==0.24.0
-scikit-learn==1.6.1
+scikit-learn==1.6.1   # Machine learning utilities and models
 scipy==1.15.2
 six==1.17.0
 smmap==5.0.2
-streamlit==1.44.1
+streamlit==1.44.1      # Web server library used by Streamlit  
 tenacity==9.1.2
 threadpoolctl==3.6.0
 toml==0.10.2
 tornado==6.4.2
-typing_extensions==4.13.1
+typing_extensions==4.13.1   #Typing support for older Python versions
 tzdata==2025.2
 urllib3==2.3.0
-watchdog==6.0.0
+watchdog==6.0.0           # File watching, hot-reloading for Streamlit
