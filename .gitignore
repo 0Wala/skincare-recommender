@@ -10,3 +10,7 @@ venv/
 Thumbs.db
 __pycache__/
 
+# Ignore admin and database files
+app/feedback.db
+app/db.py
+app/admin_feedback_viewer.py

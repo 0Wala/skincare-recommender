@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+from feedback_utils import insert_feedback
+
 
 # Page config
 st.set_page_config(page_title="Glow Guide", layout="wide")
@@ -186,7 +188,44 @@ with tabs[1]:
     
         else:
             st.warning("Sorry, no matching products found. Try adjusting your preferences.")
-                         
+       
+       
+      # Feedback form
+    st.markdown("---", unsafe_allow_html=True)
+    
+
+    col1, col2, col3 = st.columns([1, 1, 2.5])  # Adjust for layout
+    with col3:
+        # Custom style for clean white feedback box
+        st.markdown(
+            """
+            <style>
+            [data-testid="stExpander"] {
+                background-color: #ffffff !important;
+                border: 1px solid #f0f0f0;
+                border-radius: 10px;
+                padding: 15px;
+            }
+            [data-testid="stExpander"] > div:first-child {
+                color: #d88da6 !important;
+                font-weight: 600;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+
+        # Feedback box
+        with st.expander("Share your feedback "):
+            feedback = st.text_area("We’d love to know what’s on your mind 😊")
+            if st.button("Submit Feedback"):
+                if feedback.strip():
+                    insert_feedback(feedback)  # Only works if you imported this!
+                    st.success("Thank you for sharing 💋")
+                    st.session_state.feedback_input = ""
+                else:
+                    st.warning("Feedback box looks empty!")
+                        
 
 # -------------------------------
 # 📘 TAB 3: Skin Care 101 – Product Usage + Tips
@@ -249,41 +288,42 @@ with tabs[2]:
 
     with st.expander("🔍 Not sure about your skin type? Click here for a quick self-check."):
         st.markdown("""
-         " Wash your face with a gentle cleanser and wait for about an hour without applying anything."
+        - **Wash your face with a gentle cleanser and wait for about an hour without applying anything.**
         - **If Normal**: skin feels comfortable and balanced, not oily or dry.
         - **If Oily**: skin becomes shiny or oily and large pores are visible.
-        - **If Dry**: skin feels tight or looks flaky/rough.Especially on the cheeks and forehead.
+        - **If Dry**: skin feels tight or looks flaky/rough, especially on the cheeks and forehead.
         - **If Combination**: skin is oily in the T-zone (forehead, nose, chin) and dry/normal around the cheeks.
-        - **If Sensitive**: skin easily reacts with redness, stinging, or breakouts,especially after using new products. 
+        - **If Sensitive**: skin easily reacts with redness, stinging, or breakouts, especially after using new products.
         """)
-        
-    
+
     st.markdown(
-    '''
-    <style>
-    [data-testid="stExpander"] {
-        background-color: #e6f0fa;        /*  Soft blue */
-        border: 1px solid #bcd4ec;        /* Gentle blue edge */
-        border-radius: 8px;
-        color: #4a4a4a;                   /* deep gray for text */
-    }
+        '''
+        <style>
+        [data-testid="stExpander"] {
+            background-color: #e6f7ff;        /* Light blue background */
+            border: 1px solid #91d5ff;        /* Blue border */
+            border-radius: 8px;
+            color: #4a4a4a;                   /* Deep gray for text */
+            margin-top: 20px;                 /* Add spacing to avoid overlap */
+        }
 
-    [data-testid="stExpander"] > div:first-child {
-        font-weight: bold;
-    }
+        [data-testid="stExpander"] > div:first-child {
+            font-weight: bold;
+            color: #096dd9;                  /* Dark blue for header text */
+        }
 
-    [data-testid="stExpander"] svg {
-        color: #5f80aa;                  
-    }
-    </style>
-    ''',
-    unsafe_allow_html=True
-)
+        [data-testid="stExpander"] svg {
+            color: #1890ff;                  /* Blue color for the expand/collapse icon */
+        }
+        </style>
+        ''',
+        unsafe_allow_html=True
+    )
 
 
     st.markdown(
     """
-    <p style='text-align: right; font-size: 0.8rem; font-style: italic; color: #4a4a4a; margin-top: 30px;'>
+    <p style='text-align: right; font-size: 0.8rem; font-style: italic; color: #4a4a4a; margin-top: 50px;'>
      A reminder to be gentle with your skin — it’s already carrying your beauty.<br>
     Products are just the polish 🌸.
     </p>
